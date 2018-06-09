@@ -1,0 +1,55 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "org.junit.platform:junit-platform-gradle-plugin:1.1.0"
+        classpath "io.spring.gradle:dependency-management-plugin:1.0.5.RELEASE"
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springboot}"
+    }
+}
+
+group 'com.harry.winser'
+version '1.0-SNAPSHOT'
+
+
+subprojects {
+    apply plugin: "java"
+    apply plugin: "io.spring.dependency-management"
+
+    sourceCompatibility = 1.10
+
+    configurations.all {
+        resolutionStrategy {
+//            failOnVersionConflict()
+
+            exclude module: 'logback-classic'
+            exclude module: 'spring-boot-starter-jetty'
+        }
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    // required for modules
+    afterEvaluate {
+        compileJava {
+            inputs.property("moduleName", moduleName)
+            doFirst {
+                options.compilerArgs = [
+                        '--module-path', classpath.asPath
+                ]
+                classpath = files()
+            }
+        }
+    }
+
+}

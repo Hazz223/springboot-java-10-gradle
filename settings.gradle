@@ -1,0 +1,5 @@
+rootProject.name = 'springboot-java-10'
+include 'application'
+include 'biscuit'
+include 'biscuit'
+
