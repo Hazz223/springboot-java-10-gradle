@@ -8,4 +8,6 @@ module com.harry.winser.spring.boot.java.biscuit {
     requires jackson.annotations;
     requires java.validation;
 
-    exports com.harry.winser.spring.boot.java.biscuit.web;}
+    exports com.harry.winser.spring.boot.java.biscuit.web;
+    exports com.harry.winser.spring.boot.java.biscuit.service;
+}
