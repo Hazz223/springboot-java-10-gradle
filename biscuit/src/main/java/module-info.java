@@ -8,9 +8,4 @@ module com.harry.winser.spring.boot.java.biscuit {
     requires jackson.annotations;
     requires java.validation;
 
-    exports com.harry.winser.spring.boot.java.biscuit.web;
-    exports com.harry.winser.spring.boot.java.biscuit.domain;
-    exports com.harry.winser.spring.boot.java.biscuit.service;
-
-    // so, it's not the internal structure thats the issue. It just doesn't seem to want to book for some reason...
-}
+    exports com.harry.winser.spring.boot.java.biscuit.web;}
